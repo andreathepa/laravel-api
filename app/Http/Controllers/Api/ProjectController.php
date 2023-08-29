@@ -10,7 +10,7 @@ use App\Models\Project;
 class ProjectController extends Controller
 {
     public function index(){
-        $projects = Project::all();
+        $projects = Project::with('category', 'technology')->paginate(3);
 
         return response()->json([
             'success'  => true,
